@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Screen1.dart';
 import 'Constants.dart';
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 
 void main() => runApp(HomePage());
 
@@ -15,7 +16,12 @@ class HomePage extends StatelessWidget {
           centerTitle: true,
           title: kAppBarText,
         ),
-        body: HomePage1(),
+        body: DoubleBackToCloseApp(
+          child: HomePage1(),
+          snackBar: const SnackBar(
+            content: Text('Tap back again to exit'),
+          ),
+        ),
       ),
     );
   }
