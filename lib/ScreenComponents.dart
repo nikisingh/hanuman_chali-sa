@@ -3,7 +3,13 @@ import 'package:hanuman_chalisa/Constants.dart';
 
 class ScreenComponents extends StatelessWidget {
   ScreenComponents(
-      {this.size, this.image, this.text, this.prevFunction, this.nextFunction, this.pageTextNumber});
+      {this.size,
+      this.image,
+      this.text,
+      this.prevFunction,
+      this.nextFunction,
+      this.pageTextNumber,
+      this.nextFunctionName = 'Next'});
 
   final Size size;
   final Image image;
@@ -11,6 +17,7 @@ class ScreenComponents extends StatelessWidget {
   final Function nextFunction;
   final String text;
   final String pageTextNumber;
+  final String nextFunctionName;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +44,16 @@ class ScreenComponents extends StatelessWidget {
                 onPressed: prevFunction,
                 child: Text('Prev'),
               ),
-              SizedBox(width: 100, child : Text(pageTextNumber,textAlign: TextAlign.center,) , )
-              ,
+              SizedBox(
+                width: 100,
+                child: Text(
+                  pageTextNumber,
+                  textAlign: TextAlign.center,
+                ),
+              ),
               RaisedButton(
                 onPressed: nextFunction,
-                child: Text('Next'),
+                child: Text(nextFunctionName),
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hanuman_chalisa/main.dart';
+import 'NavDrawer.dart';
 import 'Screen22.dart';
 import 'ScreenComponents.dart';
 import 'Constants.dart';
@@ -9,6 +10,7 @@ class Screen23 extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      drawer: SideMenu(),
       appBar: AppBar(
           backgroundColor: Colors.black, centerTitle: true, title: kAppBarText),
       body: ScreenComponents(
@@ -20,7 +22,7 @@ class Screen23 extends StatelessWidget {
             fit: BoxFit.fill,
           ),
           text:
-              'पवनतनय संकट हरन\n मंगल मूरति रूप\nराम लखन सीता सहित\n हृदय बसहु सुर भूप\n || समाप्त ||',
+              'पवनतनय संकट हरन\n मंगल मूरति रूप |\nराम लखन सीता सहित\n हृदय बसहु सुर भूप ||\n || समाप्त ||',
           prevFunction: () {
             //Navigator.pop(context);
             Navigator.push(
@@ -34,7 +36,8 @@ class Screen23 extends StatelessWidget {
               MaterialPageRoute(builder: (context) => HomePage()),
             );
           },
-          pageTextNumber: '23'),
+          pageTextNumber: '23',
+          nextFunctionName: 'Start Again'),
     );
   }
 }

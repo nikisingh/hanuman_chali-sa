@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hanuman_chalisa/main.dart';
 import 'Constants.dart';
+import 'NavDrawer.dart';
 import 'Screen2.dart';
 import 'ScreenComponents.dart';
 
@@ -9,6 +10,7 @@ class Screen1 extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      drawer: SideMenu(),
       appBar: AppBar(
           backgroundColor: Colors.black, centerTitle: true, title: kAppBarText),
       body: ScreenComponents(
@@ -20,7 +22,7 @@ class Screen1 extends StatelessWidget {
             fit: BoxFit.fill,
           ),
           text:
-              'श्रीगुरु चरन सरोज रज \n निजमनु मुकुरु सुधारि | \n बरनउँ रघुबर बिमल जसु \n जो दायकु फल चारि |',
+              'श्रीगुरु चरन सरोज रज \n निजमनु मुकुरु सुधारि | \n बरनउँ रघुबर बिमल जसु \n जो दायकु फल चारि ||',
           prevFunction: () {
             //Navigator.pop(context);
             Navigator.push(

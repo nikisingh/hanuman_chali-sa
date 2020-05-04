@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hanuman_chalisa/HanumanChalisa.dart';
+import 'NavDrawer.dart';
 import 'Screen1.dart';
 import 'Constants.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
@@ -11,6 +13,7 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        drawer: SideMenu(),
         appBar: AppBar(
           backgroundColor: Colors.black,
           centerTitle: true,
@@ -19,7 +22,10 @@ class HomePage extends StatelessWidget {
         body: DoubleBackToCloseApp(
           child: HomePage1(),
           snackBar: const SnackBar(
-            content: Text('Tap back again to exit'),
+            content: Text(
+              'Tap back again to exit',
+              style: kArtiFontText,
+            ),
           ),
         ),
       ),
@@ -30,49 +36,79 @@ class HomePage extends StatelessWidget {
 class HomePage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isButtonPressedHC = false;
+    bool isButtonPressedHA = false;
     Size size = MediaQuery.of(context).size;
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            flex: 5,
-            child: RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Screen1()),
-                );
-              },
-              child: Image.asset('images/shree-hanuman-ji.jpg',
-                  // Image.network(
-                  //'https://galleryofgod.files.wordpress.com/2014/03/wpid-god-hanuman-hd-wallpapers-jpg.jpeg',
-                  width: size.width,
-                  height: size.height,
-                  fit: BoxFit.fill),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-            width: 150.0,
-            child: Divider(
-              color: Colors.teal.shade100,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Text(
-              'Hanuman Chalisa',
-              style: TextStyle(
-                  fontFamily: 'DancingScript',
-                  fontSize: 40.0,
+      child: Container(
+        color: Colors.white,
+        padding: EdgeInsets.all(15.0),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Flexible(
+                flex: 8,
+                child: Image.asset('images/shree-hanuman-ji.jpg',
+                    width: size.width, height: size.height, fit: BoxFit.cover),
+              ),
+              SizedBox(
+                width: size.width,
+                child: Divider(
                   color: Colors.black,
-                  //fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  decoration: TextDecoration.none),
-            ),
-          )
-        ],
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: RaisedButton(
+                      elevation: 8.0,
+                      color: isButtonPressedHC ? Colors.grey : Colors.white,
+                      onPressed: () {
+                        isButtonPressedHC = !isButtonPressedHC;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Screen1()),
+                        );
+                      },
+                      child: Text(
+                        'श्री हनुमान चालीसा',
+                        style: kFontText,
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+                width: 50.0,
+                child: Divider(
+                  color: Colors.teal.shade100,
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: RaisedButton(
+                    elevation: 8.0,
+                    color: isButtonPressedHA ? Colors.grey : Colors.white,
+                    onPressed: () {
+                      isButtonPressedHA = !isButtonPressedHA;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HanumanChalisa()),
+                      );
+                    },
+                    child: Text(
+                      'आरती',
+                      style: kFontText,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

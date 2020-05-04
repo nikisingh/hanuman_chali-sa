@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'NavDrawer.dart';
 import 'Screen20.dart';
 import 'Screen22.dart';
 import 'ScreenComponents.dart';
@@ -9,6 +10,7 @@ class Screen21 extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      drawer: SideMenu(),
       appBar: AppBar(
           backgroundColor: Colors.black, centerTitle: true, title: kAppBarText),
       body: ScreenComponents(
@@ -20,7 +22,7 @@ class Screen21 extends StatelessWidget {
             fit: BoxFit.fill,
           ),
           text:
-              'जय जय जय हनुमान गोसाईं\nकृपा करहु गुरुदेव की नाईं\nजो सत बार पाठ कर कोई\nछूटहि बन्दि महा सुख होई',
+              'जय जय जय हनुमान गोसाईं\nकृपा करहु गुरुदेव की नाईं |\nजो सत बार पाठ कर कोई\nछूटहि बन्दि महा सुख होई ||',
           prevFunction: () {
             //Navigator.pop(context);
             Navigator.push(
